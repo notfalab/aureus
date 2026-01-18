@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AUREUS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4D03F;
+            --gold-dark: #B8960C;
+            --bg-primary: #000000;
+            --bg-secondary: #0A0A0A;
+            --bg-card: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --text-muted: #666666;
+            --border-color: #222222;
+            --accent-green: #00D68F;
+            --accent-red: #FF4757;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background Effects */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Header */
+        header {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 36px;
+            width: auto;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .user-menu:hover {
+            background: var(--bg-card);
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--bg-primary);
+        }
+
+        .user-name {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .logout-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .welcome-section {
+            margin-bottom: 2rem;
+        }
+
+        .welcome-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-subtitle {
+            color: var(--text-secondary);
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 16px;
+            padding: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                transparent 25%,
+                rgba(212, 175, 55, 0.3) 50%,
+                transparent 75%,
+                transparent 100%
+            );
+            background-size: 200% 100%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: border-glow 3s linear infinite;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        @keyframes border-glow {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-title svg {
+            color: var(--gold-primary);
+        }
+
+        /* Subscription Card */
+        .subscription-card {
+            grid-column: span 2;
+        }
+
+        .subscription-status {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            box-shadow: 0 0 10px var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.inactive {
+            background: var(--text-muted);
+            box-shadow: none;
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .status-text {
+            font-weight: 600;
+        }
+
+        .status-text.active {
+            color: var(--accent-green);
+        }
+
+        .status-text.inactive {
+            color: var(--text-muted);
+        }
+
+        .subscription-details {
+            display: flex;
+            gap: 2rem;
+            flex: 1;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .detail-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .subscription-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border: none;
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        /* Bot Download Card */
+        .download-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .download-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+        }
+
+        .download-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-primary);
+        }
+
+        .download-details h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .download-details p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .download-btn {
+            width: 100%;
+        }
+
+        .download-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-box {
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Support Card */
+        .support-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .support-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1rem;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .support-link:hover {
+            background: var(--bg-card);
+            border-color: var(--gold-primary);
+            transform: translateX(5px);
+        }
+
+        .support-link svg {
+            color: var(--gold-primary);
+        }
+
+        /* No Subscription State */
+        .no-subscription {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .no-subscription-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .no-subscription h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .no-subscription p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Loading State */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--gold-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo-img {
+                height: 30px;
+            }
+
+            .user-name {
+                display: none;
+            }
+
+            main {
+                padding: 1.5rem 1rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .subscription-card {
+                grid-column: span 1;
+            }
+
+            .subscription-status {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .subscription-details {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .subscription-actions {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="AUREUS" class="logo-img">
+        </a>
+        <div class="header-right">
+            <div class="user-menu">
+                <div class="user-avatar" id="userAvatar">--</div>
+                <span class="user-name" id="userName">Loading...</span>
+            </div>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="welcome-section">
+            <h1 class="welcome-title">Welcome back, <span id="welcomeName">Trader</span>!</h1>
+            <p class="welcome-subtitle">Manage your AUREUS subscription and download your bot.</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Subscription Status -->
+            <div class="card subscription-card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        Subscription Status
+                    </h2>
+                </div>
+                
+                <div id="subscriptionContent">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bot Download -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download Bot
+                    </h2>
+                </div>
+                <div class="download-section">
+                    <div class="download-info">
+                        <div class="download-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                        </div>
+                        <div class="download-details">
+                            <h4>AUREUS.ex5</h4>
+                            <p>MetaTrader 5 Expert Advisor</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary download-btn" id="downloadBtn" disabled>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download Bot
+                    </button>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center;" id="downloadNote">
+                        Active subscription required
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="20" x2="18" y2="10"/>
+                            <line x1="12" y1="20" x2="12" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="14"/>
+                        </svg>
+                        Bot Performance
+                    </h2>
+                </div>
+                <div class="quick-stats">
+                    <div class="stat-box">
+                        <div class="stat-value">73.2%</div>
+                        <div class="stat-label">Win Rate</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">1.85</div>
+                        <div class="stat-label">Profit Factor</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">847</div>
+                        <div class="stat-label">Total Trades</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">12.4%</div>
+                        <div class="stat-label">Max Drawdown</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        Support & Resources
+                    </h2>
+                </div>
+                <div class="support-links">
+                    <a href="https://t.me/aureusbot" target="_blank" class="support-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21.5 2.5L2 10.5l6.5 2.5M21.5 2.5L15 22l-6.5-9M21.5 2.5L8.5 13"/>
+                        </svg>
+                        Telegram Support
+                    </a>
+                    <a href="#" class="support-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                        Installation Guide
+                    </a>
+                    <a href="#" class="support-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polygon points="10 8 16 12 10 16 10 8"/>
+                        </svg>
+                        Video Tutorials
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Initialize Supabase
+        const SUPABASE_URL = 'https://votrwzrtxovhwokvjmxd.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdHJ3enJ0eG92aHdva3ZqbXhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg3Njk1MjEsImV4cCI6MjA4NDM0NTUyMX0.0rMWFxDIMLcaE2UB2OO6s8izmXbhDafy2_NE39dmEEY';
+        const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/dRm3cv2ev6Oj2l1exAabK00';
+        
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Check authentication
+        let currentUser = null;
+        let userProfile = null;
+
+        async function checkAuth() {
+            const { data: { session } } = await supabase.auth.getSession();
+            
+            if (!session) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            currentUser = session.user;
+            await loadUserProfile();
+            updateUI();
+        }
+
+        async function loadUserProfile() {
+            const { data, error } = await supabase
+                .from('profiles')
+                .select('*')
+                .eq('id', currentUser.id)
+                .single();
+
+            if (data) {
+                userProfile = data;
+            }
+        }
+
+        function updateUI() {
+            // Update user info
+            const fullName = currentUser.user_metadata?.full_name || currentUser.email?.split('@')[0] || 'Trader';
+            const initials = fullName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+            
+            document.getElementById('userAvatar').textContent = initials;
+            document.getElementById('userName').textContent = fullName;
+            document.getElementById('welcomeName').textContent = fullName.split(' ')[0];
+
+            // Update subscription status
+            updateSubscriptionUI();
+        }
+
+        function updateSubscriptionUI() {
+            const subscriptionContent = document.getElementById('subscriptionContent');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const downloadNote = document.getElementById('downloadNote');
+            
+            const isActive = userProfile?.subscription_status === 'active';
+            
+            if (isActive) {
+                subscriptionContent.innerHTML = `
+                    <div class="subscription-status">
+                        <div class="status-indicator">
+                            <div class="status-dot"></div>
+                            <span class="status-text active">Active</span>
+                        </div>
+                        <div class="subscription-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Plan</span>
+                                <span class="detail-value">Full Access</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Next Billing</span>
+                                <span class="detail-value">--</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Monthly</span>
+                                <span class="detail-value">$399</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subscription-actions">
+                        <button class="btn btn-secondary" onclick="manageSubscription()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                            Manage Subscription
+                        </button>
+                    </div>
+                `;
+                
+                downloadBtn.disabled = false;
+                downloadNote.textContent = 'Ready to download';
+                downloadNote.style.color = 'var(--accent-green)';
+            } else {
+                subscriptionContent.innerHTML = `
+                    <div class="no-subscription">
+                        <div class="no-subscription-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3>No Active Subscription</h3>
+                        <p>Subscribe to AUREUS to start automated gold trading.</p>
+                        <button class="btn btn-primary" onclick="subscribe()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                            Subscribe Now - $899
+                        </button>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem;">$500 setup + $399/month</p>
+                    </div>
+                `;
+                
+                downloadBtn.disabled = true;
+                downloadNote.textContent = 'Active subscription required';
+                downloadNote.style.color = 'var(--text-muted)';
+            }
+        }
+
+        function subscribe() {
+            window.location.href = STRIPE_PAYMENT_LINK;
+        }
+
+        function manageSubscription() {
+            // This would link to Stripe Customer Portal
+            alert('Stripe Customer Portal coming soon. Contact support for subscription changes.');
+        }
+
+        // Download bot
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            if (userProfile?.subscription_status === 'active') {
+                // Trigger download
+                alert('Bot download will be available soon. Contact support for manual delivery.');
+            }
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            window.location.href = 'login.html';
+        });
+
+        // Initialize
+        checkAuth();
+    </script>
+</body>
+</html>

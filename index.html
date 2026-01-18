@@ -137,6 +137,24 @@
             box-shadow: var(--glow-gold);
         }
 
+        .nav-login {
+            padding: 0.6rem 1.25rem;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-login:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -3517,6 +3535,7 @@
             <li><a href="#testimonials">Testimonials</a></li>
         </ul>
         <button class="nav-cta" onclick="window.location.href='https://buy.stripe.com/dRm3cv2ev6Oj2l1exAabK00'">Get Started</button>
+        <button class="nav-login" onclick="window.location.href='login.html'">Login</button>
     </nav>
 
     <!-- Hero Section -->
