@@ -546,7 +546,7 @@
     <div class="bg-gradient"></div>
 
     <header>
-        <a href="index.html" class="logo">
+        <a href="/home" class="logo">
             <img src="logo.png" alt="AUREUS" class="logo-img">
         </a>
         <div class="header-right">
@@ -711,7 +711,7 @@
             const { data: { session } } = await supabase.auth.getSession();
             
             if (!session) {
-                window.location.href = 'login.html';
+                window.location.href = '/login';
                 return;
             }
 
@@ -834,7 +834,7 @@
         // Logout
         document.getElementById('logoutBtn').addEventListener('click', async () => {
             await supabase.auth.signOut();
-            window.location.href = 'login.html';
+            window.location.href = '/login';
         });
 
         // Initialize
