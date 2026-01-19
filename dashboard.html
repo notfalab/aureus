@@ -701,14 +701,14 @@
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdHJ3enJ0eG92aHdva3ZqbXhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg3Njk1MjEsImV4cCI6MjA4NDM0NTUyMX0.0rMWFxDIMLcaE2UB2OO6s8izmXbhDafy2_NE39dmEEY';
         const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/dRm3cv2ev6Oj2l1exAabK00';
         
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // Check authentication
         let currentUser = null;
         let userProfile = null;
 
         async function checkAuth() {
-            const { data: { session } } = await supabase.auth.getSession();
+            const { data: { session } } = await supabaseClient.auth.getSession();
             
             if (!session) {
                 window.location.href = '/login';
@@ -833,7 +833,7 @@
 
         // Logout
         document.getElementById('logoutBtn').addEventListener('click', async () => {
-            await supabase.auth.signOut();
+            await supabaseClient.auth.signOut();
             window.location.href = '/login';
         });
 

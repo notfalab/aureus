@@ -561,10 +561,10 @@
         const SUPABASE_URL = 'https://votrwzrtxovhwokvjmxd.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdHJ3enJ0eG92aHdva3ZqbXhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg3Njk1MjEsImV4cCI6MjA4NDM0NTUyMX0.0rMWFxDIMLcaE2UB2OO6s8izmXbhDafy2_NE39dmEEY';
         
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // Check if already logged in
-        supabase.auth.getSession().then(({ data: { session } }) => {
+        supabaseClient.auth.getSession().then(({ data: { session } }) => {
             if (session) {
                 window.location.href = '/dashboard';
             }
@@ -628,7 +628,7 @@
             submitBtn.textContent = 'Creating account...';
 
             try {
-                const { data, error } = await supabase.auth.signUp({
+                const { data, error } = await supabaseClient.auth.signUp({
                     email,
                     password,
                     options: {
