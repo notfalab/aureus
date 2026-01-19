@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Disclosure - AUREUS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4D03F;
+            --gold-dark: #B8960C;
+            --bg-primary: #000000;
+            --bg-secondary: #0A0A0A;
+            --bg-card: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --text-muted: #666666;
+            --border-color: #222222;
+            --accent-red: #FF4757;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--gold-primary);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+        }
+
+        .warning-banner {
+            background: rgba(255, 71, 87, 0.1);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .warning-icon {
+            color: var(--accent-red);
+            flex-shrink: 0;
+        }
+
+        .warning-content h3 {
+            color: var(--accent-red);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .warning-content p {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gold-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            color: var(--text-secondary);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--gold-primary);
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .risk-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .risk-box h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .risk-box p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--gold-primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            main {
+                padding: 2rem 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .warning-banner {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <header>
+        <a href="/home" class="logo">
+            <img src="logo.png" alt="AUREUS" class="logo-img">
+        </a>
+        <a href="/home" class="back-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Home
+        </a>
+    </header>
+
+    <main>
+        <h1 class="page-title">Risk Disclosure</h1>
+        <p class="last-updated">Last updated: January 18, 2025</p>
+
+        <div class="warning-banner">
+            <div class="warning-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+            </div>
+            <div class="warning-content">
+                <h3>Important Risk Warning</h3>
+                <p>Trading foreign exchange (forex) and commodities like gold (XAUUSD) on margin carries a high level of risk and may not be suitable for all investors. You could lose some or all of your invested capital. Before deciding to trade, you should carefully consider your investment objectives, level of experience, and risk appetite.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">1. General Risk Statement</h2>
+            <p>AUREUS is an automated trading software (Expert Advisor) that executes trades on your behalf based on pre-programmed strategies. While the software is designed to identify trading opportunities, there is no guarantee of profit, and significant losses can occur.</p>
+            <div class="highlight-box">
+                <p><strong>You should not invest money that you cannot afford to lose.</strong> Only trade with capital that is truly disposable—money that, if lost, would not affect your lifestyle or financial security.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">2. Specific Risks of Forex Trading</h2>
+            
+            <div class="risk-box">
+                <h4>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    Market Risk
+                </h4>
+                <p>Gold prices can be highly volatile and influenced by numerous factors including economic data, geopolitical events, central bank policies, and market sentiment. Prices can move rapidly against your position.</p>
+            </div>
+
+            <div class="risk-box">
+                <h4>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    Leverage Risk
+                </h4>
+                <p>Forex trading typically involves leverage, which amplifies both potential profits and losses. A small market movement can result in proportionally larger gains or losses. You may lose more than your initial deposit.</p>
+            </div>
+
+            <div class="risk-box">
+                <h4>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    Liquidity Risk
+                </h4>
+                <p>During periods of high volatility or low liquidity, it may be difficult to execute trades at desired prices. Slippage can occur, resulting in worse execution prices than expected.</p>
+            </div>
+
+            <div class="risk-box">
+                <h4>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-primary)" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    Gap Risk
+                </h4>
+                <p>Prices can "gap" significantly between trading sessions, particularly over weekends or during major news events. Stop-loss orders may not protect you from gap moves.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">3. Risks Specific to Automated Trading</h2>
+            <ul>
+                <li><strong>Technical Failures:</strong> Software bugs, connectivity issues, or server problems can prevent trades from executing properly or cause unintended trades.</li>
+                <li><strong>Strategy Limitations:</strong> No trading strategy works in all market conditions. Strategies that performed well historically may fail in changing markets.</li>
+                <li><strong>Over-Optimization:</strong> Past performance shown in backtests may not be indicative of future results. Historical results can be overfitted to past data.</li>
+                <li><strong>Execution Delays:</strong> Network latency or broker issues can cause delays in trade execution, affecting results.</li>
+                <li><strong>System Requirements:</strong> The bot requires a stable internet connection and properly configured MetaTrader 5 to function correctly.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">4. No Guarantee of Profits</h2>
+            <p>AUREUS makes no representations or guarantees regarding:</p>
+            <ul>
+                <li>Future trading performance or results</li>
+                <li>Achievement of any specific profit targets</li>
+                <li>Accuracy of any historical performance data</li>
+                <li>Suitability of the software for your specific situation</li>
+            </ul>
+            <p>Any performance statistics, win rates, or profit factors mentioned are historical and do not guarantee future performance. Market conditions change, and past results are never a reliable indicator of future outcomes.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">5. Your Responsibilities</h2>
+            <p>By using AUREUS, you acknowledge that:</p>
+            <ul>
+                <li>You have read and understood this Risk Disclosure</li>
+                <li>You understand the risks of forex trading and automated systems</li>
+                <li>You are trading with money you can afford to lose</li>
+                <li>You are solely responsible for your trading decisions and results</li>
+                <li>You will monitor your trading account regularly</li>
+                <li>You have tested the software on a demo account before live trading</li>
+                <li>You understand that AUREUS is not providing financial advice</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">6. Regulatory Considerations</h2>
+            <p>AUREUS is a software tool, not a financial service. We do not:</p>
+            <ul>
+                <li>Manage your money or trading account</li>
+                <li>Provide investment advice or recommendations</li>
+                <li>Hold or have access to your trading funds</li>
+                <li>Act as a broker or financial intermediary</li>
+            </ul>
+            <p>You are responsible for ensuring that forex trading is legal in your jurisdiction and for complying with all applicable regulations.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">7. Recommended Practices</h2>
+            <p>To manage your risk when using AUREUS:</p>
+            <ul>
+                <li><strong>Start with a demo account</strong> to understand how the bot operates</li>
+                <li><strong>Never risk more than 1-2%</strong> of your capital on any single trade</li>
+                <li><strong>Monitor your account regularly</strong> even with automated trading</li>
+                <li><strong>Have realistic expectations</strong> about potential returns</li>
+                <li><strong>Keep sufficient margin</strong> to withstand drawdowns</li>
+                <li><strong>Diversify</strong> and don't rely solely on one trading system</li>
+                <li><strong>Consider consulting</strong> a financial advisor before trading</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">8. Acknowledgment</h2>
+            <div class="highlight-box">
+                <p>By subscribing to and using AUREUS, you confirm that you have read, understood, and accept all risks outlined in this disclosure. You acknowledge that trading forex involves substantial risk of loss and that you are solely responsible for any trading decisions and their outcomes.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">9. Contact Us</h2>
+            <p>If you have questions about this Risk Disclosure, please contact us:</p>
+            <ul>
+                <li>Telegram: <a href="https://t.me/aureusbot" style="color: var(--gold-primary);">@aureusbot</a></li>
+                <li>Twitter: <a href="https://twitter.com/aureusbot" style="color: var(--gold-primary);">@aureusbot</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AUREUS. All rights reserved. | <a href="/terms">Terms of Service</a> | <a href="/privacy">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>

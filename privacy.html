@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - AUREUS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4D03F;
+            --gold-dark: #B8960C;
+            --bg-primary: #000000;
+            --bg-secondary: #0A0A0A;
+            --bg-card: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --text-muted: #666666;
+            --border-color: #222222;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--gold-primary);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gold-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            color: var(--text-secondary);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--gold-primary);
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-table th {
+            color: var(--gold-primary);
+            font-weight: 600;
+            background: var(--bg-card);
+        }
+
+        .data-table td {
+            color: var(--text-secondary);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--gold-primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            main {
+                padding: 2rem 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .data-table {
+                font-size: 0.85rem;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <header>
+        <a href="/home" class="logo">
+            <img src="logo.png" alt="AUREUS" class="logo-img">
+        </a>
+        <a href="/home" class="back-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Home
+        </a>
+    </header>
+
+    <main>
+        <h1 class="page-title">Privacy Policy</h1>
+        <p class="last-updated">Last updated: January 18, 2025</p>
+
+        <div class="section">
+            <h2 class="section-title">1. Introduction</h2>
+            <p>AUREUS ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our automated trading software and related services.</p>
+            <p>By using AUREUS, you consent to the data practices described in this policy.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">2. Information We Collect</h2>
+            <p>We collect the following types of information:</p>
+            
+            <h3 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--text-primary);">Personal Information</h3>
+            <ul>
+                <li>Name (first and last name)</li>
+                <li>Email address</li>
+                <li>Payment information (processed securely by Stripe)</li>
+                <li>Account credentials (encrypted)</li>
+            </ul>
+
+            <h3 style="font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--text-primary);">Usage Information</h3>
+            <ul>
+                <li>Subscription status and history</li>
+                <li>Login timestamps and IP addresses</li>
+                <li>Device and browser information</li>
+                <li>Bot download and activation records</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">3. How We Use Your Information</h2>
+            <p>We use your information for the following purposes:</p>
+            <table class="data-table">
+                <tr>
+                    <th>Purpose</th>
+                    <th>Legal Basis</th>
+                </tr>
+                <tr>
+                    <td>Provide and maintain the Service</td>
+                    <td>Contract performance</td>
+                </tr>
+                <tr>
+                    <td>Process payments and subscriptions</td>
+                    <td>Contract performance</td>
+                </tr>
+                <tr>
+                    <td>Send service-related communications</td>
+                    <td>Legitimate interest</td>
+                </tr>
+                <tr>
+                    <td>Provide customer support</td>
+                    <td>Contract performance</td>
+                </tr>
+                <tr>
+                    <td>Prevent fraud and abuse</td>
+                    <td>Legitimate interest</td>
+                </tr>
+                <tr>
+                    <td>Comply with legal obligations</td>
+                    <td>Legal compliance</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">4. Information Sharing</h2>
+            <p>We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:</p>
+            <ul>
+                <li><strong>Service Providers:</strong> We share data with trusted third parties who assist us in operating our Service (e.g., Stripe for payments, Supabase for authentication)</li>
+                <li><strong>Legal Requirements:</strong> We may disclose information when required by law or to protect our rights</li>
+                <li><strong>Business Transfers:</strong> In the event of a merger or acquisition, your information may be transferred</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">5. Data Security</h2>
+            <p>We implement robust security measures to protect your information:</p>
+            <ul>
+                <li>All data is encrypted in transit using TLS/SSL</li>
+                <li>Passwords are hashed and never stored in plain text</li>
+                <li>Payment information is handled securely by Stripe (PCI-DSS compliant)</li>
+                <li>Regular security audits and monitoring</li>
+                <li>Access controls and authentication requirements</li>
+            </ul>
+            <div class="highlight-box">
+                <p><strong>Note:</strong> We never have access to your MetaTrader account credentials or trading account funds. The bot operates locally on your computer.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">6. Data Retention</h2>
+            <p>We retain your personal information for as long as necessary to provide the Service and fulfill the purposes outlined in this policy. After account deletion:</p>
+            <ul>
+                <li>Account data is deleted within 30 days</li>
+                <li>Payment records are retained for 7 years (legal requirement)</li>
+                <li>Anonymized usage data may be retained for analytics</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">7. Your Rights</h2>
+            <p>Depending on your location, you may have the following rights:</p>
+            <ul>
+                <li><strong>Access:</strong> Request a copy of your personal data</li>
+                <li><strong>Correction:</strong> Request correction of inaccurate data</li>
+                <li><strong>Deletion:</strong> Request deletion of your data</li>
+                <li><strong>Portability:</strong> Request transfer of your data</li>
+                <li><strong>Objection:</strong> Object to certain processing activities</li>
+                <li><strong>Withdrawal:</strong> Withdraw consent at any time</li>
+            </ul>
+            <p>To exercise these rights, contact us via Telegram at @aureusbot.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">8. Cookies and Tracking</h2>
+            <p>We use essential cookies to:</p>
+            <ul>
+                <li>Maintain your login session</li>
+                <li>Remember your preferences</li>
+                <li>Ensure security of your account</li>
+            </ul>
+            <p>We do not use third-party advertising cookies or tracking pixels.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">9. International Data Transfers</h2>
+            <p>Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your data in accordance with applicable laws.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">10. Children's Privacy</h2>
+            <p>AUREUS is not intended for individuals under 18 years of age. We do not knowingly collect personal information from children. If you believe we have collected information from a minor, please contact us immediately.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">11. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by email or through the Service. Your continued use of AUREUS after such modifications constitutes acceptance of the updated policy.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">12. Contact Us</h2>
+            <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
+            <ul>
+                <li>Telegram: <a href="https://t.me/aureusbot" style="color: var(--gold-primary);">@aureusbot</a></li>
+                <li>Twitter: <a href="https://twitter.com/aureusbot" style="color: var(--gold-primary);">@aureusbot</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AUREUS. All rights reserved. | <a href="/terms">Terms of Service</a> | <a href="/risk">Risk Disclosure</a></p>
+    </footer>
+</body>
+</html>

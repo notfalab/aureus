@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - AUREUS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F4D03F;
+            --gold-dark: #B8960C;
+            --bg-primary: #000000;
+            --bg-secondary: #0A0A0A;
+            --bg-card: #111111;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --text-muted: #666666;
+            --border-color: #222222;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--gold-primary);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gold-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .section ul {
+            color: var(--text-secondary);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--gold-primary);
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--gold-primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            main {
+                padding: 2rem 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <header>
+        <a href="/home" class="logo">
+            <img src="logo.png" alt="AUREUS" class="logo-img">
+        </a>
+        <a href="/home" class="back-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Home
+        </a>
+    </header>
+
+    <main>
+        <h1 class="page-title">Terms of Service</h1>
+        <p class="last-updated">Last updated: January 18, 2025</p>
+
+        <div class="section">
+            <h2 class="section-title">1. Agreement to Terms</h2>
+            <p>By accessing or using AUREUS ("the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, you may not access or use the Service.</p>
+            <p>AUREUS provides automated trading software (Expert Advisor) for the XAUUSD (Gold) market on the MetaTrader 5 platform. By subscribing to our Service, you acknowledge that you have read, understood, and agree to these Terms.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">2. Description of Service</h2>
+            <p>AUREUS offers:</p>
+            <ul>
+                <li>Automated trading bot (Expert Advisor) for MetaTrader 5</li>
+                <li>Trading signals and automated execution for XAUUSD</li>
+                <li>Technical support via Telegram</li>
+                <li>Software updates and improvements</li>
+            </ul>
+            <p>The Service requires a one-time setup fee of $500 USD and a monthly subscription of $399 USD.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">3. User Responsibilities</h2>
+            <p>As a user of AUREUS, you agree to:</p>
+            <ul>
+                <li>Provide accurate and complete registration information</li>
+                <li>Maintain the security of your account credentials</li>
+                <li>Use the software only on your own trading accounts</li>
+                <li>Not redistribute, resell, or share the software with third parties</li>
+                <li>Not reverse engineer, decompile, or modify the software</li>
+                <li>Comply with all applicable laws and regulations in your jurisdiction</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">4. Trading Risks</h2>
+            <div class="highlight-box">
+                <p><strong>Important:</strong> Trading forex and commodities involves substantial risk of loss and is not suitable for all investors. Past performance is not indicative of future results. You should carefully consider whether trading is appropriate for you in light of your financial situation.</p>
+            </div>
+            <p>You acknowledge that:</p>
+            <ul>
+                <li>Trading involves significant risk of financial loss</li>
+                <li>Automated trading systems can malfunction or produce unexpected results</li>
+                <li>Market conditions can change rapidly and unpredictably</li>
+                <li>You are solely responsible for your trading decisions and results</li>
+                <li>AUREUS does not guarantee any specific returns or profits</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">5. Payment and Subscription</h2>
+            <p>By subscribing to AUREUS, you agree to:</p>
+            <ul>
+                <li>Pay the one-time setup fee of $500 USD upon initial subscription</li>
+                <li>Pay the monthly subscription fee of $399 USD</li>
+                <li>Authorize automatic recurring payments until you cancel</li>
+                <li>Provide valid payment information</li>
+            </ul>
+            <p>All payments are processed securely through Stripe. Prices are in USD and do not include any applicable taxes.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">6. Cancellation and Refunds</h2>
+            <p>You may cancel your subscription at any time through your dashboard or by contacting support. Upon cancellation:</p>
+            <ul>
+                <li>Your access will continue until the end of the current billing period</li>
+                <li>No refunds will be provided for partial months</li>
+                <li>The setup fee is non-refundable after 7 days</li>
+                <li>You may request a full refund within 7 days of initial purchase if you are not satisfied</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">7. Intellectual Property</h2>
+            <p>AUREUS and all related software, content, and materials are the exclusive property of AUREUS and are protected by copyright, trademark, and other intellectual property laws. You are granted a limited, non-exclusive, non-transferable license to use the software for personal trading purposes only.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">8. Limitation of Liability</h2>
+            <p>To the maximum extent permitted by law, AUREUS shall not be liable for:</p>
+            <ul>
+                <li>Any trading losses or financial damages</li>
+                <li>Software malfunctions or technical errors</li>
+                <li>Broker-related issues or execution problems</li>
+                <li>Loss of data or unauthorized access to your account</li>
+                <li>Any indirect, incidental, or consequential damages</li>
+            </ul>
+            <p>Our total liability shall not exceed the amount you paid for the Service in the 12 months preceding the claim.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">9. Disclaimer of Warranties</h2>
+            <p>The Service is provided "as is" and "as available" without any warranties of any kind, either express or implied. We do not warrant that the Service will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">10. Modifications to Terms</h2>
+            <p>We reserve the right to modify these Terms at any time. We will notify users of any material changes via email or through the Service. Your continued use of the Service after such modifications constitutes acceptance of the updated Terms.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">11. Termination</h2>
+            <p>We may terminate or suspend your access to the Service immediately, without prior notice, for any reason, including breach of these Terms. Upon termination, your right to use the Service will cease immediately.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">12. Governing Law</h2>
+            <p>These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which AUREUS operates, without regard to its conflict of law provisions.</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">13. Contact Information</h2>
+            <p>If you have any questions about these Terms, please contact us:</p>
+            <ul>
+                <li>Telegram: <a href="https://t.me/aureusbot" style="color: var(--gold-primary);">@aureusbot</a></li>
+                <li>Twitter: <a href="https://twitter.com/aureusbot" style="color: var(--gold-primary);">@aureusbot</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AUREUS. All rights reserved. | <a href="/privacy">Privacy Policy</a> | <a href="/risk">Risk Disclosure</a></p>
+    </footer>
+</body>
+</html>

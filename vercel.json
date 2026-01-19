@@ -5,7 +5,10 @@
     { "source": "/register", "destination": "/register.html" },
     { "source": "/dashboard", "destination": "/dashboard.html" },
     { "source": "/forgot-password", "destination": "/forgot-password.html" },
-    { "source": "/update-password", "destination": "/update-password.html" }
+    { "source": "/update-password", "destination": "/update-password.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/risk", "destination": "/risk.html" }
   ],
   "trailingSlash": false
 }
