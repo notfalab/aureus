@@ -642,8 +642,10 @@
 
                 if (error) throw error;
 
-                showMessage('Account created! Check your email to verify your account.', 'success');
-                submitBtn.textContent = 'Check your email';
+                showMessage('Account created! Redirecting...', 'success');
+                setTimeout(() => {
+                    window.location.href = '/dashboard';
+                }, 1000);
 
             } catch (error) {
                 showMessage(error.message, 'error');
