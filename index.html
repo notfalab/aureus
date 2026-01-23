@@ -3650,17 +3650,75 @@
         .discord-section {
             padding: 5rem 4rem;
             position: relative;
-            background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(88, 101, 242, 0.05) 50%, var(--bg-primary) 100%);
+            background: linear-gradient(135deg, #5865F2 0%, #4752C4 50%, #3C45A5 100%);
+            overflow: hidden;
+        }
+
+        .discord-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .discord-particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: floatParticle 15s infinite ease-in-out;
+        }
+
+        .discord-particle:nth-child(1) { left: 5%; top: 20%; animation-delay: 0s; width: 8px; height: 8px; }
+        .discord-particle:nth-child(2) { left: 15%; top: 60%; animation-delay: 2s; width: 12px; height: 12px; }
+        .discord-particle:nth-child(3) { left: 25%; top: 30%; animation-delay: 4s; width: 6px; height: 6px; }
+        .discord-particle:nth-child(4) { left: 35%; top: 80%; animation-delay: 1s; width: 14px; height: 14px; }
+        .discord-particle:nth-child(5) { left: 45%; top: 10%; animation-delay: 3s; width: 10px; height: 10px; }
+        .discord-particle:nth-child(6) { left: 55%; top: 50%; animation-delay: 5s; width: 8px; height: 8px; }
+        .discord-particle:nth-child(7) { left: 65%; top: 25%; animation-delay: 2.5s; width: 16px; height: 16px; }
+        .discord-particle:nth-child(8) { left: 75%; top: 70%; animation-delay: 0.5s; width: 6px; height: 6px; }
+        .discord-particle:nth-child(9) { left: 85%; top: 40%; animation-delay: 4.5s; width: 12px; height: 12px; }
+        .discord-particle:nth-child(10) { left: 95%; top: 85%; animation-delay: 1.5s; width: 10px; height: 10px; }
+        .discord-particle:nth-child(11) { left: 10%; top: 45%; animation-delay: 3.5s; width: 14px; height: 14px; }
+        .discord-particle:nth-child(12) { left: 30%; top: 15%; animation-delay: 6s; width: 8px; height: 8px; }
+        .discord-particle:nth-child(13) { left: 50%; top: 75%; animation-delay: 2.2s; width: 10px; height: 10px; }
+        .discord-particle:nth-child(14) { left: 70%; top: 5%; animation-delay: 4.8s; width: 12px; height: 12px; }
+        .discord-particle:nth-child(15) { left: 90%; top: 55%; animation-delay: 1.8s; width: 6px; height: 6px; }
+
+        @keyframes floatParticle {
+            0%, 100% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translateY(-30px) translateX(15px) scale(1.1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-15px) translateX(-10px) scale(0.9);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translateY(-40px) translateX(20px) scale(1.2);
+                opacity: 0.7;
+            }
         }
 
         .discord-container {
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .discord-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 3rem;
             text-align: center;
@@ -3675,29 +3733,30 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #5865F2, #7289DA);
+            background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.6), rgba(255,255,255,0.3));
         }
 
         .discord-icon {
             width: 80px;
             height: 80px;
-            background: rgba(88, 101, 242, 0.15);
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            color: #5865F2;
+            color: #fff;
         }
 
         .discord-title {
             font-size: 1.75rem;
             font-weight: 700;
             margin-bottom: 0.75rem;
+            color: #fff;
         }
 
         .discord-description {
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.8);
             font-size: 1rem;
             line-height: 1.7;
             margin-bottom: 2rem;
@@ -3715,12 +3774,12 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.9);
             font-size: 0.95rem;
         }
 
         .discord-feature svg {
-            color: #5865F2;
+            color: #fff;
             flex-shrink: 0;
         }
 
@@ -3729,10 +3788,10 @@
             align-items: center;
             gap: 0.75rem;
             padding: 1rem 2rem;
-            background: #5865F2;
+            background: #fff;
             border: none;
             border-radius: 10px;
-            color: #fff;
+            color: #5865F2;
             font-family: 'Outfit', sans-serif;
             font-size: 1rem;
             font-weight: 600;
@@ -3742,9 +3801,9 @@
         }
 
         .discord-btn:hover {
-            background: #4752C4;
+            background: rgba(255, 255, 255, 0.9);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         @media (max-width: 768px) {
@@ -4912,6 +4971,23 @@
 
     <!-- Discord Community Section -->
     <section class="discord-section" id="community">
+        <div class="discord-particles">
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+            <div class="discord-particle"></div>
+        </div>
         <div class="discord-container">
             <div class="discord-content">
                 <div class="discord-icon">
