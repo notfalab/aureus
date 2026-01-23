@@ -826,8 +826,13 @@
         // Download bot
         document.getElementById('downloadBtn').addEventListener('click', () => {
             if (userProfile?.subscription_status === 'active') {
-                // Trigger download
-                alert('Bot download will be available soon. Contact support for manual delivery.');
+                // Create download link
+                const link = document.createElement('a');
+                link.href = '/AUREUS.ex5';
+                link.download = 'AUREUS.ex5';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
             }
         });
 
