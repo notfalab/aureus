@@ -818,21 +818,37 @@
             window.location.href = STRIPE_PAYMENT_LINK;
         }
 
-        function manageSubscription() {
-            // This would link to Stripe Customer Portal
-            alert('Stripe Customer Portal coming soon. Contact support for subscription changes.');
+        async function manageSubscription() {
+            // Redirect to Stripe Customer Portal
+            if (userProfile?.stripe_customer_id) {
+                window.open('https://billing.stripe.com/p/login/dRm3cv2ev6Oj2l1exAabK00', '_blank');
+            } else {
+                alert('No active subscription found. Please subscribe first.');
+            }
         }
 
-        // Download bot
-        document.getElementById('downloadBtn').addEventListener('click', () => {
+        // Download bot (secure download from Supabase Storage)
+        document.getElementById('downloadBtn').addEventListener('click', async () => {
             if (userProfile?.subscription_status === 'active') {
-                // Create download link
-                const link = document.createElement('a');
-                link.href = '/AUREUS.ex5';
-                link.download = 'AUREUS.ex5';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                try {
+                    // Get signed URL from Supabase Storage
+                    const { data, error } = await supabaseClient.storage
+                        .from('bot-files')
+                        .createSignedUrl('AUREUS.ex5', 60); // URL valid for 60 seconds
+
+                    if (error) throw error;
+
+                    // Download the file
+                    const link = document.createElement('a');
+                    link.href = data.signedUrl;
+                    link.download = 'AUREUS.ex5';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } catch (error) {
+                    console.error('Download error:', error);
+                    alert('Error downloading bot. Please try again or contact support.');
+                }
             }
         });
 
