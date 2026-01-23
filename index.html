@@ -3552,6 +3552,100 @@
             }
         }
 
+        /* FAQ Section */
+        .faq {
+            padding: 6rem 4rem;
+            position: relative;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .faq-item.active {
+            border-color: var(--gold-primary);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: none;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--gold-primary);
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            color: var(--gold-primary);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            padding: 0 1.5rem 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .faq {
+                padding: 4rem 1.5rem;
+            }
+
+            .faq-question {
+                padding: 1rem 1.25rem;
+                font-size: 0.95rem;
+            }
+
+            .faq-answer p {
+                padding: 0 1.25rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
         /* Video Modal */
         .video-modal {
             display: none;
@@ -3629,6 +3723,7 @@
             <li><a href="#live-performance">Live Stats</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#faq">FAQ</a></li>
         </ul>
         <button class="nav-cta" onclick="window.location.href='/register'">Get Started</button>
         <button class="nav-login" onclick="window.location.href='/login'">Login</button>
@@ -4589,6 +4684,113 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="section-header">
+            <span class="section-label">FAQ</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know about AUREUS</p>
+        </div>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What is AUREUS?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>AUREUS is an automated trading bot (Expert Advisor) designed specifically for trading Gold (XAUUSD) on MetaTrader 5. It uses advanced support and resistance strategies combined with machine learning to identify high-probability trading opportunities 24/7.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How much money do I need to start?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>AUREUS works with any account balance. However, we recommend starting with at least $500-$1000 for optimal risk management. The bot automatically adjusts lot sizes based on your account balance and risk settings.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Which brokers are compatible?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>AUREUS is compatible with any broker that supports MetaTrader 5 and offers XAUUSD trading. This includes major brokers like IC Markets, Pepperstone, XM, FTMO, and most prop firms. We recommend brokers with low spreads on gold for best results.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do I need trading experience?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>No trading experience is required. AUREUS is fully automated – it analyzes the market, opens trades, manages risk, and closes positions automatically. You just need to install it on MetaTrader 5 and let it run. We provide step-by-step installation guides and support.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Does my computer need to be on 24/7?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, MetaTrader 5 needs to be running for the bot to trade. We recommend using a VPS (Virtual Private Server) for 24/7 operation. Many brokers offer free VPS services, or you can use services like ForexVPS starting at $20/month.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What is the win rate?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>AUREUS has a historical win rate of approximately 70-73% based on backtesting and live trading results. However, past performance does not guarantee future results. Market conditions vary, and all trading involves risk.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Can I use it on prop firm accounts?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! AUREUS is optimized for prop firm challenges and funded accounts. It has a maximum daily drawdown of around 4%, respects drawdown limits, and can be configured to match specific prop firm rules. Many of our users successfully trade FTMO, MyForexFunds, and other prop firms.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How do I cancel my subscription?</span>
+                    <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>You can cancel anytime from your dashboard with one click. Go to Dashboard → Manage Subscription → Cancel. There are no long-term contracts or cancellation fees. Your access continues until the end of your billing period.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta">
         <div class="cta-bg"></div>
@@ -5220,6 +5422,24 @@
 
         // Initialize grid animation
         gridAnimation.init();
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
 
         // Video Modal Functions
         function openVideoModal() {
